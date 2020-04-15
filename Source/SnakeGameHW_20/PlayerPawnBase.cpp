@@ -4,6 +4,7 @@
 #include "PlayerPawnBase.h"
 #include "Engine/Classes/Camera/CameraComponent.h"
 #include "SnakeBase.h"
+#include "Engine/World.h"
 
 // Sets default values
 APlayerPawnBase::APlayerPawnBase()
