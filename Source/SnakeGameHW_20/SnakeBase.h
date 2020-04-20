@@ -8,6 +8,15 @@
 
 class ASnakeElementBase;
 
+UENUM()
+enum class EMovementDirection
+{
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+};
+
 UCLASS()
 class SNAKEGAMEHW_20_API ASnakeBase : public AActor
 {
@@ -21,10 +30,16 @@ public:
 		float ElementSize;
 
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<ASnakeElementBase> SnakeElementClass;
+		float MovementSpeed;
+
+	UPROPERTY(EditDefaultsOnly)
+		TSubclassOf<ASnakeElementBase> SnakeElementClass;
 
 	UPROPERTY(BlueprintReadOnly)
 		TArray<ASnakeElementBase*> SnakeElements;
+
+	UPROPERTY()
+		EMovementDirection LastMoveDirection;
 
 protected:
 	// Called when the game starts or when spawned
@@ -36,5 +51,6 @@ public:
 
 	void AddSnakeElement(int ElementsNum = 1);
 
+	void Move(float DeltaTime);
 
 };
